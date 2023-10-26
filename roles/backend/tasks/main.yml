@@ -1,0 +1,50 @@
+    - name: check nodejs installation
+      ansible.builtin.shell: type npm
+      register: chek_status
+      ignore_errors: yes
+
+    - name: install nodejs repo
+      ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+      when: chek_status.rc != 0 
+
+    - name: print nodejs status
+      ansible.builtin.debug:
+        msg: "{{chek_status}}"
+
+    - name: install nodejs
+      ansible.builtin.dnf:
+        name: nodejs
+      when: chek_status.rc!=0
+
+    - name: create application user
+      ansible.builtin.user:
+        name: expense
+
+    - name: import role
+      ansible.builtin.import_role:
+        name: common
+        tasks_from: app_prereq
+
+    - name: install dependencies
+      ansible.builtin.shell: npm install
+      args:
+        chdir: /app
+
+    - name: copy backend service
+      ansible.builtin.template:
+        src: backend.service
+        dest: /etc/systemd/system/backend.service
+
+    - name: start backend service
+      ansible.builtin.systemd:
+        name: backend
+        state: restarted
+        enabled: yes
+        daemon-reload: yes
+    
+    - name: install mysql client
+      ansible.builtin.dnf:
+        name: mysql
+
+    - name: load schema
+      ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', 'expense.backend.mysql', region='us-east-1') }} -uroot -p{{ lookup('aws_ssm', 'expense.backend.mysql_password', region='us-east-1') }} < /app/schema/backend.sql
