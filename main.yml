@@ -1,4 +1,4 @@
-- name: mysql setup
+- name: setup file
   hosts: all
   become: yes
   roles:
