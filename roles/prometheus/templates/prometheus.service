@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus Time Series Collection and Processing Server
+
+[Service]
+Group=prometheus
+ExecStart=/usr/local/bin/prometheus 
+
+[Install]
+WantedBy=multi-user.target

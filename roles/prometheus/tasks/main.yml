@@ -1,0 +1,26 @@
+- name: create directory to store prometheus data
+  ansible.builtin.file:
+    path: /etc/prometheus
+    state: directory
+
+- name: install prometheus
+  ansible.builtin.unrachive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.48.0-rc.0/prometheus-2.48.0-rc.0.linux-amd64.tar.gz
+    dest: /opt
+
+- name: copy configuration file
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+
+- name: copy prometheus service
+  ansible.builtin.template:
+   src: prometheus.service
+   dest: /etc/systemd/system/prometheus.service
+
+- name: restart service
+  ansible.builtin.systemd:
+    name: prometheus
+    enabled: yes
+    state: restarted
+    daemon-reload: yes
