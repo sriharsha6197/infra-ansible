@@ -1,3 +1,8 @@
+- name: update dnf package
+  ansible.builtin.dnf:
+    name: prometheus
+    state: installed
+
 - name: create directory to store prometheus data
   ansible.builtin.file:
     path: /etc/prometheus
