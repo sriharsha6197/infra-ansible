@@ -3,8 +3,14 @@
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
 
+- name: install prometheus
+  ansible.builtin.unarchive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.14.0/prometheus-2.14.0.linux-amd64.tar.gz -P
+    dest: /opt/prometheus
+
 - name: restart service
   ansible.builtin.systemd:
     name: prometheus
     state: restarted
+    enabled: yes
     daemon-reload: yes
