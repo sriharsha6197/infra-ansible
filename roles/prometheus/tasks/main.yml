@@ -17,9 +17,9 @@
 - name: copy prometheus service
   ansible.builtin.template:
     src: prometheus.service
-    dest: /etc/systemd/system/prometheus
+    dest: /etc/systemd/system/prometheus.service
 
-- name: restart service
+- name: restart prometheus
   ansible.builtin.systemd:
     name: prometheus
     daemon-reload: yes
