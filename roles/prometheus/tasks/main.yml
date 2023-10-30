@@ -14,6 +14,11 @@
     dest: /etc/prometheus
     remote_src: yes
 
+- name: copy prometheus service
+  ansible.builtin.template:
+    src: prometheus.service
+    dest: /etc/systemd/system/prometheus
+
 - name: restart service
   ansible.builtin.systemd:
     name: prometheus
