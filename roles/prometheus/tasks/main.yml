@@ -3,7 +3,7 @@
     src: prometheus.yml
     dest: /etc/prometheus/prometheus.yml
 
-- nane: create a directory
+- name: create a directory
   ansible.builtin.file:
     path: /etc/prometheus
     state: directory
