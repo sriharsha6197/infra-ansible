@@ -3,9 +3,14 @@
     src: prometheus.yml
     dest: /etc/prometheus/prometheus.yml
 
+- nane: create a directory
+  ansible.builtin.file:
+    path: /etc/prometheus
+    state: directory
+
 - name: install prometheus
   ansible.builtin.unarchive:
-    src: https://github.com/prometheus/prometheus/releases/download/v2.14.0/prometheus-2.14.0.linux-amd64.tar.gz -P
+    src: https://github.com/prometheus/prometheus/releases/download/v2.14.0/prometheus-2.14.0.linux-amd64.tar.gz
     dest: /etc/prometheus
 
 - name: restart service
