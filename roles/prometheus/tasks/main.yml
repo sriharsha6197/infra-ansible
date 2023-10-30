@@ -1,12 +1,12 @@
 - name: copy configuration file
   ansible.builtin.template:
     src: prometheus.yml
-    dest: /opt/prometheus/prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
 
 - name: install prometheus
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/prometheus/releases/download/v2.14.0/prometheus-2.14.0.linux-amd64.tar.gz -P
-    dest: /opt/prometheus
+    dest: /etc/prometheus
 
 - name: restart service
   ansible.builtin.systemd:
