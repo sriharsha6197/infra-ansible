@@ -1,12 +1,12 @@
-- name: copy configuration file
-  ansible.builtin.template:
-    src: prometheus.yml
-    dest: /etc/prometheus/prometheus.yml
-
 - name: create a directory
   ansible.builtin.file:
     path: /etc/prometheus
     state: directory
+
+- name: copy configuration file
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
 
 - name: install prometheus
   ansible.builtin.unarchive:
