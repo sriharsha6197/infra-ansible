@@ -22,15 +22,19 @@
 - name: Install firewalld
   ansible.builtin.dnf:
     name: firewalld
-    state: latest
-  notify:
-    - start firewalld    
+    state: latest   
 
-- name: start firewalld
+- name: permit traffic in default zone for https service
+  ansible.posix.firewalld:
+    service: https
+    permanent: true
+    state: enabled
+
+- name: enable firewalld
   ansible.builtin.service:
     name: firewalld
     state: started
-    enabled: yes
+    enabled: true
   become: yes
 
 - name: setup port for firewalld
