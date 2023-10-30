@@ -19,6 +19,27 @@
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
+- name: Install firewalld
+  ansible.builtin.dnf:
+    name: firewalld
+    state: latest
+  notify:
+    - start firewalld    
+
+- name: start firewalld
+  ansible.builtin.service:
+    name: firewalld
+    state: started
+    enabled: yes
+  become: yes
+
+- name: setup port for firewalld
+  ansible.posix.firewalld:
+    port: 9090/tcp
+    permanent: true
+    state: enabled
+  become: yes
+
 - name: restart prometheus
   ansible.builtin.systemd:
     name: prometheus
