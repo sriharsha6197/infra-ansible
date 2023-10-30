@@ -12,6 +12,7 @@
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/prometheus/releases/download/v2.14.0/prometheus-2.14.0.linux-amd64.tar.gz
     dest: /etc/prometheus
+    remote_src: yes
 
 - name: restart service
   ansible.builtin.systemd:
