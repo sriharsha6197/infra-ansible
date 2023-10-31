@@ -19,16 +19,6 @@
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
-- name: copy grafana repo
-  ansible.builtin.template:
-    src: grafana.repo
-    dest: /etc/yum.repos.d/grafana.repo
-
-- name: install grafana
-  ansible.builtin.dnf:
-    name: grafana
-    state: installed
-
 - name: restart prometheus
   ansible.builtin.systemd:
     name: prometheus
