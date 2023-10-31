@@ -5,7 +5,7 @@ Wants=network-online.target
 After=network-online.target                                                                                                              
                                                                                            
 [Service]                                                                                                                                                 
-ExecStart=/usr/sbin/grafana-server                                                 \           
+ExecStart=/etc/grafana                                                 \           
                             --config=${CONF_FILE}                                   \           
                             --pidfile=${PID_FILE_DIR}/grafana-server.pid            \           
                             --packaging=deb                                         \           
