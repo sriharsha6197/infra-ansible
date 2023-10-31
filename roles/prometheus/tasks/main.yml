@@ -56,7 +56,7 @@
 
 - name: restart systemd units
   ansible.builtin.systemd:
-    name: {{ item }}
+    name: "{{ item }}"
     daemon-reload: yes
     enabled: yes
     state: restarted
