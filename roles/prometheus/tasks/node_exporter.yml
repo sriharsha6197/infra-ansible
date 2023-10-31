@@ -1,0 +1,22 @@
+- name: create a directory
+  ansible.builtin.file:
+    path: /opt
+    state: directory
+
+- name: install node exporter
+  ansible.builtin.unarchive:
+    src: https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+    dest: /opt
+    remote_src: yes
+
+- name: copy node exporter service
+  ansible.builtin.template:
+    src: node_exporter.service
+    dest: /etc/systemd/system/node_exporter.service
+
+- name: restart service
+  ansible.builtin.systemd:
+    name: node_exporter
+    enabled: yes
+    state: restarted
+    daemon-reload: yes 
