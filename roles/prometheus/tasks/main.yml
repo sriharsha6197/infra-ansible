@@ -29,20 +29,9 @@
     name: grafana
     state: installed
 
-- name: copy grafana service
-  ansible.builtin.template:
-    src: grafana.service
-    dest: /etc/systemd/system/grafana.service
-
 - name: restart prometheus
   ansible.builtin.systemd:
     name: prometheus
     state: restarted
     enabled: yes
     daemon-reload: yes
-
-- name: restart grafana
-  ansible.builtin.systemd:
-    name: grafana
-    state: restarted
-    enabled: yes
