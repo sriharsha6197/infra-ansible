@@ -2,11 +2,10 @@
 Description=Grafana instance                                                                    
 Documentation=http://docs.grafana.org                                                           
 Wants=network-online.target                                                                     
-After=network-online.target                                                                     
-After=postgresql.service mariadb.service mysql.service                                          
-                                                                                                
+After=network-online.target                                                                                                              
+                                                                                           
 [Service]                                                                                                                                                 
-ExecStart=/etc/grafana/grafana.ini                                                 \           
+ExecStart=/usr/sbin/grafana-server                                                 \           
                             --config=${CONF_FILE}                                   \           
                             --pidfile=${PID_FILE_DIR}/grafana-server.pid            \           
                             --packaging=deb                                         \           
