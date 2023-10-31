@@ -19,31 +19,6 @@
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
-# - name: Install firewalld
-#   ansible.builtin.dnf:
-#     name: firewalld
-#     state: latest   
-
-# - name: permit traffic in default zone for https service
-#   ansible.posix.firewalld:
-#     service: https
-#     permanent: true
-#     state: enabled
-
-# - name: enable firewalld
-#   ansible.builtin.service:
-#     name: firewalld
-#     state: started
-#     enabled: true
-#   become: yes
-
-# - name: setup port for firewalld
-#   ansible.posix.firewalld:
-#     port: 9090/tcp
-#     permanent: true
-#     state: enabled
-#   become: yes
-
 - name: copy grafana repo
   ansible.builtin.template:
     src: grafana.repo
