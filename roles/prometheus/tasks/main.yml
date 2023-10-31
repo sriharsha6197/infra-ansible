@@ -45,3 +45,4 @@
   ansible.builtin.systemd:
     name: grafana
     state: restarted
+    enabled: yes
