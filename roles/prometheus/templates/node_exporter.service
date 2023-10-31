@@ -4,7 +4,8 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/opt/
+Type=simple
+ExecStart=/etc/node_exporter
 
 [Install]
 WantedBy=multi-user.target
