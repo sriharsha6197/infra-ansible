@@ -5,20 +5,8 @@ Wants=network-online.target
 After=network-online.target                                                                     
 After=postgresql.service mariadb.service mysql.service                                          
                                                                                                 
-[Service]                                                                                                                                   
-Type=notify
-Restart=on-failure                                                                              
-WorkingDirectory=/etc/grafana/grafana.ini                                                            
-RuntimeDirectory=grafana                                                                        
-RuntimeDirectoryMode=0750                                                                       
-ExecStart=/etc/grafana/grafana.ini                                                  \           
-                            --config=${CONF_FILE}                                   \           
-                            --pidfile=${PID_FILE_DIR}/grafana-server.pid            \           
-                            --packaging=deb                                         \           
-                            cfg:default.paths.logs=${LOG_DIR}                       \           
-                            cfg:default.paths.data=${DATA_DIR}                      \           
-                            cfg:default.paths.plugins=${PLUGINS_DIR}                \           
-                            cfg:default.paths.provisioning=${PROVISIONING_CFG_DIR}            
-                             
+[Service]                                                                                                                                                 
+ExecStart=/etc/grafana/grafana.ini \        
+
 [Install]
 WantedBy=multi-user.target
