@@ -54,6 +54,11 @@
     name: grafana
     state: installed
 
+- name: copy grafana service
+  ansible.builtin.template:
+    src: grafana.service
+    dest: /etc/systemd/system/grafana.service
+
 - name: restart systemd units
   ansible.builtin.systemd:
     name: "{{ item }}"
