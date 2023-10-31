@@ -1,12 +1,12 @@
 - name: create a directory
   ansible.builtin.file:
-    path: /opt
+    path: /etc/node_exporter
     state: directory
 
 - name: install node exporter
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
-    dest: /opt
+    dest: /etc/node_exporter
     remote_src: yes
 
 - name: copy node exporter service
