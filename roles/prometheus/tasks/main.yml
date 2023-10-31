@@ -61,4 +61,9 @@
     name: grafana
     state: installed
 
-    
+- name: restart grafana
+  ansible.builtin.systemd:
+    name: grafana
+    enabled: yes
+    state: restarted
+    daemon-reload: yes
