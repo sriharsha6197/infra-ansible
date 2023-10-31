@@ -44,13 +44,6 @@
 #     state: enabled
 #   become: yes
 
-- name: restart prometheus
-  ansible.builtin.systemd:
-    name: prometheus
-    daemon-reload: yes
-    enabled: yes
-    state: restarted
-
 - name: copy grafana repo
   ansible.builtin.template:
     src: grafana.repo
@@ -60,3 +53,13 @@
   ansible.builtin.dnf:
     name: grafana
     state: installed
+
+- name: restart systemd units
+  ansible.builtin.systemd:
+    name: {{ item }}
+    daemon-reload: yes
+    enabled: yes
+    state: restarted
+  with_item:
+    - prometheus
+    - grafana
