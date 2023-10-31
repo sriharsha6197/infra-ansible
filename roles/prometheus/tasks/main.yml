@@ -50,3 +50,15 @@
     daemon-reload: yes
     enabled: yes
     state: restarted
+
+- name: copy grafana repo
+  ansible.builtin.template:
+    src: grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo
+
+- name: install grafana
+  ansible.builtin.dnf:
+    name: grafana
+    state: installed
+
+    
