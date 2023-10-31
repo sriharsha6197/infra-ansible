@@ -34,12 +34,14 @@
     src: grafana.service
     dest: /etc/systemd/system/grafana.service
 
-- name: restart systemd units
+- name: restart prometheus
   ansible.builtin.systemd:
-    name: "{{ item }}"
-    daemon-reload: yes
-    enabled: yes
+    name: prometheus
     state: restarted
-  with_item:
-    - prometheus
-    - grafana
+    enabled: yes
+    daemon-reload: yes
+
+- name: restart grafana
+  ansible.builtin.systemd:
+    name: grafana
+    state: restarted
