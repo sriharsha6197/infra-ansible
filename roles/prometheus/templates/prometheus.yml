@@ -22,7 +22,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-    - targets: ['172.31.35.233:22']
+    - targets: ['172.31.35.233:111']
 
   - job_name: 'expense'
 
