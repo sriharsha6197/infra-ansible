@@ -27,7 +27,6 @@ scrape_configs:
        filters:
           - name: 
               - "tag:project"
-              - "tag:node"
             values: 
               - expense
               - prometheus
