@@ -31,3 +31,6 @@ scrape_configs:
     relabel_configs:
      - source_labels: [__meta_ec2_private_ip]
        target_label: private_ip
+
+     - source_labels: [__meta_ec2_tag_Name]
+       target_label: Name
