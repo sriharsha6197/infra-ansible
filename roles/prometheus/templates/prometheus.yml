@@ -13,8 +13,8 @@ scrape_configs:
     groups:
       - name: example
         rules:
-        - record: node_systemd_unit_state
-          expr: sum by (code) (prometheus_http_requests_total)
+        - record: service_status_server
+          expr: node_systemd_unit_state
 
     static_configs:
     - targets: ['localhost:9090']
