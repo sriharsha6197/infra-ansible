@@ -6,6 +6,7 @@ global:
 
 rule_files:
   - records.yml
+  - alerts.yml
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.

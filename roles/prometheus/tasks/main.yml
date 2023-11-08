@@ -30,3 +30,8 @@
   ansible.builtin.template:
     src: records.yml
     dest: /etc/prometheus/records.yml
+
+- name: copy alert configuration
+  ansible.builtin.template:
+    src: alerts.yml
+    dest: /etc/prometheus/alerts.yml
