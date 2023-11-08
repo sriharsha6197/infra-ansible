@@ -6,7 +6,7 @@ route:
   receiver: 'email'
 
 receivers:
-- name: 'email'
+- name: "email"
   email_configs:
   - to: sri251375@gmail.com
     from: sri251375@gmail.com
