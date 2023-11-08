@@ -52,6 +52,11 @@
     src: alert-manager.yml
     dest: /etc/alertmanager/alert-manager.yml
 
+- name: copy alert manager service
+  ansible.builtin.template:
+    src: alertmanager.service
+    dest: /etc/systemd/system/alertmanager.service
+
 - name: restart alertmanager
   ansible.builtin.systemd:
     name: alertmanager
