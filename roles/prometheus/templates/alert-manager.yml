@@ -11,6 +11,6 @@ receivers:
   - to: sri251375@gmail.com
     from: sri251375@gmail.com
     smarthost: "email-smtp.us-east-1.amazonaws.com:587"
-    auth_username: "AKIAWLK5PUPGUIPMSVBN"
-    auth_password: "BNZImzhUiTkDpTXImM5TB/6czxrbfIOc4X7Nwjth35z1"
+    auth_username: "AKIAWLK5PUPG77RSYCNX"
+    auth_password: "BOcvTQE+5F1BpEl7ra2knPkA+WXBUwEDGwLUm2/OihuG"
     require_tls: true
