@@ -49,8 +49,8 @@
 
 - name: copy alertmanager
   ansible.builtin.template:
-    src: alert-manager.yml
-    dest: /etc/alertmanager/alert-manager.yml
+    src: alert_manager.yml
+    dest: /etc/alertmanager/alert_manager.yml
 
 - name: copy alert manager service
   ansible.builtin.template:
