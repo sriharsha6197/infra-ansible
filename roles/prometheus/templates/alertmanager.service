@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/etc/alertmanager
-ExecStart=/etc/alertmanager/alert_manager.yml
+ExecStart=/etc/alertmanager/alertmanager-0.26.0.linux-amd64/alertmanager
 
 [Install]
 WantedBy=multi-user.target
