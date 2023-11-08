@@ -61,4 +61,3 @@
   ansible.builtin.systemd:
     name: alertmanager
     state: restarted
-    daemon-reload: yes
