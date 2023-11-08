@@ -4,6 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
+User=root
 ExecStart=/etc/alertmanager/alert-manager.yml --config.file /etc/alertmanager/alert-manager.yml
 
 [Install]
