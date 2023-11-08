@@ -1,5 +1,5 @@
 groups:
-- name: Server_Down_Alert
+- name: infra_alerts
   rules:
   - alert: Server_Down_Alert
     expr: up == 0
