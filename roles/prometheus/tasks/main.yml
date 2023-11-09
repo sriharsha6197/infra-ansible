@@ -1,7 +1,14 @@
+- name: check a directory status
+  ansible.builtin.file:
+    path: /etc/prometheus
+    state: directory
+  register: stat_result
+
 - name: create a directory
   ansible.builtin.file:
     path: /etc/prometheus
     state: directory
+  when: stat_result != 0
 
 - name: copy configuration file
   ansible.builtin.template:
